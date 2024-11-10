@@ -1,0 +1,152 @@
+/* Root Variables */
+:root {
+    --primary-color: #1abc9c;
+    --primary-hover-color: #16a085;
+    --secondary-color: #f39c12;
+    --secondary-hover-color: #e67e22;
+    --light-color: #f7f7f7;
+    --dark-color: #333;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --radius: 8px;
+    --box-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: 0.3s ease-in-out;
+}
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Header Styles */
+header {
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 20px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.shop-logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--box-shadow-light);
+    transition: transform 0.4s ease;
+}
+
+.shop-logo:hover {
+    transform: rotate(360deg);
+}
+
+.shop-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1.2px;
+}
+
+/* Alert Box */
+.alert-box {
+    position: absolute;
+    top: 90px;
+    width: 100%;
+    text-align: center;
+}
+
+.alert {
+    color: red;
+    font-size: 16px;
+}
+
+/* Form Styling */
+.form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--box-shadow-light);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    font-size: 16px;
+    outline: none;
+    transition: border-color var(--transition);
+}
+
+input:focus {
+    border-color: var(--primary-color);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+button:hover {
+    background-color: var(--primary-hover-color);
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.link:hover {
+    color: var(--secondary-hover-color);
+}

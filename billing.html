@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radharani</title>
+    <link rel="icon" type="image/x-icon" href="https://img.freepik.com/premium-vector/grocery-store-logo-template-with-shopping-basket-food_884185-63.jpg?w=740">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="billing.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- Header (Optional) -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://img.freepik.com/premium-vector/grocery-store-logo-template-with-shopping-basket-food_884185-63.jpg?w=740" alt="Shop Logo" class="shop-logo">
+                <h1 class="shop-name">Radharani</h1>
+            </div>
+            <nav>
+                <a href="login.html" class="nav-link">Login</a> 
+                <a href="register.html" class="nav-link">Register</a> 
+                <a href="billing.html" class="nav-link">Billing</a>
+                <a href="feedback.html" class="nav-link">Feedback</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Billing Section -->
+    <div class="container">
+        <h1>Billing</h1>
+        <!-- Customer Name Input -->
+        <div>
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" placeholder="Enter customer name">
+        </div>
+        <div>
+            <label for="customerMobile">Mobile Number:</label>
+            <input type="text" id="customerMobile" placeholder="Enter mobile number">
+        </div>
+
+        <!-- Bill Items Section -->
+        <div id="billItems">
+            <div class="bill-item">
+                <span>Product Name</span>
+                <span>Price</span>
+                <span>Quantity</span>
+                <span>Total</span>
+            </div>
+        </div>
+        <button onclick="addItem()">Add Item</button>
+        <div class="total">Grand Total: ₹<span id="grandTotal">0</span></div>
+
+        <!-- Payment Mode Selection -->
+        <h2>Select Payment Mode</h2>
+        <label>
+            <input type="radio" name="paymentMode" value="online"> Online
+        </label>
+        <label>
+            <input type="radio" name="paymentMode" value="offline"> Offline
+        </label>
+
+        <!-- Billing Buttons -->
+        <button onclick="generateBill()">Generate Bill</button>
+        <button onclick="printBill()">Print Bill</button>
+
+        <div id="message"></div>
+    </div>
+
+    <!-- Footer (Optional) -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Radharani. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+/* Bill Items Layout */
+.bill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: var(--radius);
+}
+
+.bill-item span {
+    width: 20%;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.bill-item input[type="text"],
+.bill-item input[type="number"] {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    transition: border-color var(--transition);
+}
+
+.bill-item input[type="text"]:focus,
+.bill-item input[type="number"]:focus {
+    border-color: var(--primary-color);
+}

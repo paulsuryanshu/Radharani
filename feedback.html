@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radharani - Feedback</title>
+    <link rel="icon" type="image/x-icon" href="https://img.freepik.com/premium-vector/grocery-store-logo-template-with-shopping-basket-food_884185-63.jpg?w=740">
+    <link rel="stylesheet" href="feedback.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header with Login and Register -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://img.freepik.com/premium-vector/grocery-store-logo-template-with-shopping-basket-food_884185-63.jpg?w=740" alt="Shop Logo" class="shop-logo">
+                <h1 class="shop-name">Radharani</h1>
+            </div>
+            <nav>
+                <a href="login.html" class="nav-link">Login</a> 
+                <a href="register.html" class="nav-link">Register</a>  
+                <a href="billing.html" class="nav-link">Billing</a> 
+                <a href="feedback.html" class="nav-link">Feedback</a> <!-- Feedback page is active -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Feedback Section -->
+    <section class="feedback-form">
+        <div class="container">
+            <h2>We Value Your Feedback!</h2>
+            <p>Please take a moment to share your experience with us.</p>
+
+            <form action="submit_feedback.php" method="POST" enctype="multipart/form-data">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <!-- Product Image Upload -->
+                <div class="form-group">
+                    <label for="product-image">Upload Product Image:</label>
+                    <input type="file" id="product-image" name="product-image" accept="image/*">
+                </div>
+
+                <!-- Rating Section -->
+                <div class="form-group">
+                    <label for="rating">Rate Your Experience:</label>
+                    <div class="rating">
+                        <input type="radio" name="rating" id="star5" value="5">
+                        <label for="star5">★</label>
+                        <input type="radio" name="rating" id="star4" value="4">
+                        <label for="star4">★</label>
+                        <input type="radio" name="rating" id="star3" value="3">
+                        <label for="star3">★</label>
+                        <input type="radio" name="rating" id="star2" value="2">
+                        <label for="star2">★</label>
+                        <input type="radio" name="rating" id="star1" value="1">
+                        <label for="star1">★</label>
+                    </div>
+                </div>
+
+                <!-- Feedback Comments -->
+                <div class="form-group">
+                    <label for="comments">Your Feedback:</label>
+                    <textarea id="comments" name="comments" rows="5" placeholder="Share your feedback here..." required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit">Submit Feedback</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Radharani. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

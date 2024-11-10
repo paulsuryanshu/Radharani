@@ -1,0 +1,76 @@
+/* Feedback Form Styling */
+.feedback-form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--box-shadow-light);
+    max-width: 700px;
+    margin: 0 auto;
+    transition: box-shadow var(--transition);
+}
+
+.feedback-form-container:hover {
+    box-shadow: var(--box-shadow-hover);
+}
+
+.feedback-form-container h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-form-container p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    transition: border-color var(--transition);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus,
+.form-group input[type="file"]:focus {
+    border-color: var(--primary-color);
+}
+
+.feedback-submit {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-size: 18px;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.feedback-submit:hover {
+    background-color: var(--secondary-hover-color);
+    transform: scale(1.05);
+}

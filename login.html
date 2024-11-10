@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radharani - Login</title>
+    <link rel="icon" type="image/x-icon" href="https://img.freepik.com/premium-vector/grocery-store-logo-template-with-shopping-basket-food_884185-63.jpg?w=740" alt="Grocery Store Logo">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://img.freepik.com/premium-vector/grocery-store-logo-template-with-shopping-basket-food_884185-63.jpg?w=740" alt="Supermarket Logo" class="shop-logo">
+                <h1 class="shop-name">Radharani</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="alert-box">
+        <p class="alert"></p>
+    </div>
+
+    <div class="form">
+        <h1 class="heading">Login</h1>
+        <!-- Updated Form Element -->
+        <form id="login-form" method="POST" action="login_process.php">
+            <input type="email" name="login-email" placeholder="Email" autocomplete="off" class="email" required>
+            <input type="password" name="login-password" placeholder="Password" autocomplete="off" class="password" required>
+            <button type="submit" class="submit-btn">Log In</button>
+        </form>
+        <a href="register.html" class="link">Don't have an account? Register one</a>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="form.js"></script>
+
+</body>
+</html>

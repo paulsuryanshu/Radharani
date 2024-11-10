@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radharani Supermarket</title>
+    <link rel="icon" type="image/x-icon" href="https://img.freepik.com/premium-vector/grocery-store-logo-template-with-shopping-basket-food_884185-63.jpg?w=740">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://img.freepik.com/premium-vector/grocery-store-logo-template-with-shopping-basket-food_884185-63.jpg?w=740" alt="Supermarket Logo" class="shop-logo">
+                <h1 class="shop-name">Radharani Supermarket</h1>
+            </div>
+            <nav>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="register.html" class="nav-link">Register</a>
+                <a href="billing.html" class="nav-link">Billing</a>
+                <a href="feedback.html" class="nav-link">Feedback</a>
+            </nav>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" placeholder="Search for products..." id="search-bar">
+                <button onclick="searchProducts()">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Carousel -->
+    <section class="hero">
+        <div class="carousel">
+            <div class="slide">
+                <img src="image/9.jpg" alt="Fresh Vegetables">
+                <div class="hero-text">
+                    <h2>Fresh Groceries Delivered!</h2>
+                    <p>Your one-stop shop for quality produce.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="image/10.jpg" alt="Seasonal Fruits">
+                <div class="hero-text">
+                    <h2>Explore Seasonal Fruits</h2>
+                    <p>Directly sourced from farms.</p>
+                </div>
+            </div>
+            <a href="#products" class="shop-now-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section class="feature-section">
+        <h2>Why Choose Us?</h2>
+        <div class="features">
+            <div class="feature">
+                <img src="image/11.png" alt="Quality">
+                <h3>High Quality</h3>
+                <p>Only the best products for our customers.</p>
+            </div>
+            <div class="feature">
+                <img src="image/12.jpg" alt="Delivery">
+                <h3>Fast Delivery</h3>
+                <p>Get your order within hours.</p>
+            </div>
+            <div class="feature">
+                <img src="image/13.jpg" alt="Affordable">
+                <h3>Affordable Prices</h3>
+                <p>Best prices for fresh produce.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <h2>Browse by Category</h2>
+        <div class="filter-buttons">
+            <button onclick="filterProducts('all')">All</button>
+            <button onclick="filterProducts('fruits')">Fruits</button>
+            <button onclick="filterProducts('dairy')">Dairy</button>
+            <button onclick="filterProducts('bakery')">Bakery</button>
+            <button onclick="filterProducts('grains')">Grains</button>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="products" class="product-section">
+        <h2>Popular Products</h2>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-category="fruits">
+                <img src="image/1.jpg" alt="Apple">
+                <div class="product-info">
+                    <h3>Fresh Apples</h3>
+                    <p>₹150 / kg</p>
+                    <button onclick="addToCart('Fresh Apples', 150)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-category="dairy">
+                <img src="image/2.jpg" alt="Milk">
+                <div class="product-info">
+                    <h3>Organic Milk</h3>
+                    <p>₹60 / litre</p>
+                    <button onclick="addToCart('Organic Milk', 60)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-category="bakery">
+                <img src="image/3.jpg" alt="Bread">
+                <div class="product-info">
+                    <h3>Whole Wheat Bread</h3>
+                    <p>₹40 / loaf</p>
+                    <button onclick="addToCart('Whole Wheat Bread', 40)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-category="grains">
+                <img src="image/4.jpg" alt="Rice">
+                <div class="product-info">
+                    <h3>Basmati Rice</h3>
+                    <p>₹80 / kg</p>
+                    <button onclick="addToCart('Basmati Rice', 80)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-category="fish">
+                <img src="image/5.jpg" alt="Fresh Fish">
+                <div class="product-info">
+                    <h3>Fresh Fish</h3>
+                    <p>₹180 / kg</p>
+                    <button onclick="addToCart('Fresh Fish', 180)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-category="meat">
+                <img src="image/6.jpg" alt="Fresh Meat">
+                <div class="product-info">
+                    <h3>Fresh Meat</h3>
+                    <p>₹200 / Kg</p>
+                    <button onclick="addToCart('Fresh Meat', 200)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card" data-category="mix_fruits">
+                <img src="image/7.jpeg" alt="Mix Fruits">
+                <div class="product-info">
+                    <h3>Mix Fruits</h3>
+                    <p>₹300 / Kg</p>
+                    <button onclick="addToCart('Mix Fruits', 300)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card" data-category="icecream">
+                <img src="image/8.jpg" alt="Ice Cream">
+                <div class="product-info">
+                    <h3>Ice Cream</h3>
+                    <p>₹80 / Pcs</p>
+                    <button onclick="addToCart('Ice Cream', 80)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Special Offers Section -->
+    <section class="offers-section">
+        <h2>Special Offers</h2>
+        <div class="offers-grid">
+            <div class="offer-card">
+                <img src="image/14.jpg" alt="Discounted Apples">
+                <p><strong>20% off</strong> on fresh apples</p>
+            </div>
+            <div class="offer-card">
+                <img src="image/15.jpg" alt="Discounted Milk">
+                <p><strong>Buy 1 Get 1</strong> on selected dairy items</p>
+            </div>
+            <!-- Additional offers can be added here -->
+        </div>
+    </section>
+
+    <div class="testimonials">
+        <h2>Customer Testimonials</h2>
+        <div class="testimonial-cards-container">
+            <div class="testimonial-card">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus...</p>
+                <span class="testimonial-author">John Doe</span>
+            </div>
+            <div class="testimonial-card">
+                <p>Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent...</p>
+                <span class="testimonial-author">Jane Smith</span>
+            </div>
+            <!-- Add more testimonial cards as needed -->
+        </div>
+    </div>
+    
+    <!-- Loyalty Program Section -->
+    <div class="loyalty-section">
+        <h3>Join Our Loyalty Program</h3>
+        <p>Sign up for rewards and discounts on every purchase!</p>
+        <button>Join Now</button>
+    </div>
+    
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>Contact Us</h3>
+                <p>Email: support@radharanisupermarket.com</p>
+                <p>Phone: +91 12345 67890</p>
+                <p>Address: 123 Market Street, India</p>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
