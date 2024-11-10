@@ -25,3 +25,9 @@ To run this project locally:
 1. Clone this repository:
    ```bash
    git clone https://github.com/paulsuryanshu/Radharani.git
+
+## Deployment:
+
+You can view the live site here:
+
+<a href="https://radharanisupermarket.netlify.app/" target="_blank"> <button style="padding: 10px 20px; font-size: 16px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;"> Visit Radharani Supermarket </button> </a>
