@@ -24,4 +24,4 @@ To run this project locally:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/radharani-supermarket.git
+   git clone https://github.com/paulsuryanshu/Radharani.git
