@@ -150,25 +150,22 @@ nav {
 .hero {
     position: relative;
     overflow: hidden;
-    width: 100%;
-    height: 500px;
 }
 
 .carousel {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 300%; /* Adjust for multiple slides */
 }
 
 .slide {
     min-width: 100%;
-    height: 500px;
     position: relative;
+    height: 450px;
 }
 
 .slide img {
     width: 100%;
-    height: 100%;
+    height: 450px;
     object-fit: cover;
 }
 
@@ -179,9 +176,6 @@ nav {
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
 }
 
 .hero-text h2 {
@@ -206,30 +200,6 @@ nav {
 
 .shop-now-button:hover {
     background-color: var(--secondary-hover-color);
-}
-
-/* Navigation Buttons for Carousel */
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
-
-.carousel-nav button {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background-color var(--transition);
-}
-
-.carousel-nav button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Feature Section */
@@ -382,124 +352,277 @@ nav {
     font-size: 42px;
     color: var(--secondary-color);
     margin-bottom: 40px;
-}
-
-.offer-banner {
-    background-image: url('offer-banner.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 60px 20px;
-    border-radius: var(--radius);
-    box-shadow: var(--box-shadow-light);
-    color: white;
-    text-align: center;
     text-transform: uppercase;
 }
 
-.offer-banner h3 {
-    font-size: 32px;
+.offers-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.offer-banner p {
-    font-size: 18px;
-}
-
-.offer-banner button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    border: none;
+.offer-card {
+    background-color: #fff;
     border-radius: var(--radius);
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background-color var(--transition);
+    padding: 20px;
+    box-shadow: var(--box-shadow-light);
+    text-align: center;
+    transition: transform var(--transition), box-shadow var(--transition);
+    max-width: 300px; /* Limit card width to make the image more prominent */
 }
 
-.offer-banner button:hover {
-    background-color: var(--primary-hover-color);
+.offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--box-shadow-hover);
 }
 
-/* Footer Styling */
-footer {
-    background-color: var(--dark-color);
-    color: #ccc;
-    padding: 40px 20px;
+.offer-card img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin-bottom: 15px;
+    transition: transform var(--transition);
+}
+
+.offer-card img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.offer-card p {
+    font-size: 18px;
+    color: var(--dark-color);
+    margin-top: 10px;
+}
+
+
+/* Customer Testimonials Section */
+.testimonials {
+    padding: 60px 20px;
+    background-color: var(--light-color);
     text-align: center;
 }
 
-.footer-section {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 0;
-    flex-wrap: wrap;
+.testimonials h2 {
+    font-size: 42px;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-weight: bold;
 }
 
-.footer-logo img {
-    width: 80px;
-    border-radius: 50%;
+/* Testimonial Card Styles */
+.testimonial-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--box-shadow-light);
+    max-width: 600px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.footer-links {
-    display: flex;
-    gap: 15px;
+.testimonial-card:hover {
+    transform: translateY(-5px); /* Subtle hover effect */
 }
 
-.footer-links a {
-    color: #ccc;
-    text-decoration: none;
+.testimonial-card::before {
+    content: "“";
+    font-size: 50px;
+    color: var(--primary-color);
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    opacity: 0.1;
+}
+
+.testimonial-card p {
+    font-size: 18px;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Testimonial Author */
+.testimonial-author {
+    font-weight: bold;
+    color: var(--secondary-color);
     font-size: 16px;
-    transition: color var(--transition);
+    display: block;
+    margin-top: 10px;
 }
 
-.footer-links a:hover {
-    color: var(--secondary-color);
-}
-
-.social-icons {
+/* Responsive Grid for Testimonial Cards */
+.testimonial-cards-container {
     display: flex;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-.social-icons i {
-    font-size: 24px;
-    color: #ccc;
-    transition: color var(--transition);
+.testimonial-card {
+    flex: 1 1 45%;
+    max-width: 45%;
 }
 
-.social-icons i:hover {
-    color: var(--secondary-color);
-}
-
-.footer-note {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-/* Media Queries */
+/* Mobile Styles */
 @media (max-width: 768px) {
-    .header-container,
-    .feature-section .features,
-    .product-grid,
+    .testimonials h2 {
+        font-size: 36px;
+    }
+
+    .testimonial-card {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+
+/* Footer Section */
+footer {
+    background-color: var(--dark-color);
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 16px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--secondary-color); /* Optional: adds hover color for better UX */
+}
+
+/* Footer Layout Adjustments */
+footer .footer-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-section div {
+    margin: 10px 0;
+}
+
+.footer-section .contact-info,
+.footer-section .social-links,
+.footer-section .quick-links {
+    margin: 15px 0;
+}
+
+/* Footer Responsive Design */
+@media (min-width: 768px) {
     .footer-section {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
     }
 
-    .shop-name {
-        font-size: 24px;
+    .footer-section div {
+        margin: 0 15px;
     }
+}
 
-    .feature,
-    .product-card {
-        width: 100%;
-        margin-bottom: 20px;
-    }
 
-    .hero-text h2 {
-        font-size: 32px;
-    }
+/* Center Join Our Loyalty Program Section */
+.loyalty-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8; /* Light background color for contrast */
+    margin-bottom: 20px;
+}
 
-    .footer-logo img {
-        width: 60px;
-    }
+.loyalty-section h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.loyalty-section p {
+    font-size: 16px;
+    color: #555;
+}
+
+.loyalty-section button {
+    background-color: #007bff; /* Primary color for button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.loyalty-section button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+/* Carousel Styling */
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 500px;
+}
+
+.slide {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.shop-now-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Display the first slide */
+.carousel .slide:first-child {
+    display: block;
 }
