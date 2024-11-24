@@ -22,7 +22,8 @@ function updateTotal(input) {
     const totalItem = price * quantity;
 
     // Update the item's total display
-    billItem.children[3].textContent = `₹${totalItem.toFixed(2)}`;
+    const totalElement = billItem.querySelector('span');
+    totalElement.textContent = `₹${totalItem.toFixed(2)}`;
     calculateGrandTotal();
 }
 
@@ -30,7 +31,7 @@ function updateTotal(input) {
 function calculateGrandTotal() {
     const billItems = document.querySelectorAll('.bill-item');
     total = Array.from(billItems).reduce((acc, item) => {
-        const itemTotal = parseFloat(item.children[3].textContent.replace('₹', '')) || 0;
+        const itemTotal = parseFloat(item.querySelector('span').textContent.replace('₹', '')) || 0;
         return acc + itemTotal;
     }, 0);
 
@@ -53,7 +54,6 @@ function generateBill() {
     message.textContent = `Bill generated successfully for ${customerName} (Mobile: ${customerMobile}). Payment mode: ${paymentMode.value}, Total: ₹${total.toFixed(2)}`;
     message.style.color = 'green';
 }
-
 
 // Print the bill with validation
 function printBill() {
@@ -120,10 +120,6 @@ function printBill() {
     billWindow.close();
 }
 
-
-
-
-
 // Feedback Form Validation
 document.getElementById('feedbackForm')?.addEventListener('submit', (e) => {
     const name = document.getElementById('name').value.trim();
@@ -181,24 +177,37 @@ if (urlParams.has('message')) {
     showAlert(message);
 }
 
-// JavaScript for Carousel Slider
+// Carousel Functionality
 let currentSlide = 0;
 const slides = document.querySelectorAll(".carousel .slide");
 
 function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.style.display = i === index ? "block" : "none";
-    });
+    slides[currentSlide].classList.remove("active");
+    slides[currentSlide].classList.add("exiting");
+
+    setTimeout(() => {
+        slides[currentSlide].classList.remove("exiting");
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add("active");
+    }, 1000);
 }
 
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-}
+setInterval(() => {
+    showSlide(currentSlide + 1);
+}, 5000);
 
-// Show the first slide initially
-showSlide(currentSlide);
+// Dark Mode Toggle
+const toggleButton = document.createElement("button");
+toggleButton.classList.add("dark-mode-toggle");
+toggleButton.innerText = "Dark Mode";
+document.body.appendChild(toggleButton);
 
-// Change slide every 5 seconds
-setInterval(nextSlide, 5000);
+toggleButton.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark-mode");
+});
 
+// Hamburger Menu
+document.getElementById('hamburger').addEventListener('click', function () {
+    const navMenu = document.getElementById('nav-menu');
+    navMenu.classList.toggle('active');
+});
