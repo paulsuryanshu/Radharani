@@ -626,3 +626,123 @@ footer .footer-section {
 .carousel .slide:first-child {
     display: block;
 }
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 15;
+    transition: transform var(--transition);
+}
+
+.hamburger:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: var(--primary-color);
+    border-radius: var(--radius);
+    padding: 20px;
+    z-index: 10;
+    box-shadow: var(--box-shadow-light);
+    transition: transform var(--transition);
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+/* Dark Mode Variables */
+:root.dark-mode {
+    --primary-color: #333;
+    --primary-hover-color: #444;
+    --secondary-color: #ffa502;
+    --secondary-hover-color: #e67e22;
+    --light-color: #222;
+    --dark-color: #f7f7f7;
+    --box-shadow-light: 0 4px 12px rgba(255, 255, 255, 0.1);
+    --box-shadow-hover: 0 10px 24px rgba(255, 255, 255, 0.2);
+}
+
+/* Dark Mode Button */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: var(--box-shadow-light);
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.dark-mode-toggle:hover {
+    background-color: var(--secondary-hover-color);
+    transform: scale(1.1);
+}
+
+/* Keyframes for Carousel */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+/* Carousel Slide */
+.carousel .slide {
+    display: none;
+    animation: slideIn 1s ease forwards;
+}
+
+.carousel .slide.active {
+    display: block;
+}
+
+.carousel .slide.exiting {
+    animation: slideOut 1s ease forwards;
+}
+
+/* Improved Button Focus States */
+button:focus, a:focus {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 3px;
+}
