@@ -197,17 +197,24 @@ setInterval(() => {
 }, 5000);
 
 // Dark Mode Toggle
-const toggleButton = document.createElement("button");
-toggleButton.classList.add("dark-mode-toggle");
-toggleButton.innerText = "Dark Mode";
-document.body.appendChild(toggleButton);
+const toggleButton = document.querySelector(".dark-mode-toggle");
 
-toggleButton.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark-mode");
-});
+if (!toggleButton) {
+    const newToggleButton = document.createElement("button");
+    newToggleButton.classList.add("dark-mode-toggle");
+    newToggleButton.innerText = "Dark Mode";
+    document.body.appendChild(newToggleButton);
+
+    newToggleButton.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark-mode");
+        newToggleButton.innerText = document.documentElement.classList.contains("dark-mode")
+            ? "Light Mode"
+            : "Dark Mode";
+    });
+}
 
 // Hamburger Menu
-document.getElementById('hamburger').addEventListener('click', function () {
+document.getElementById('hamburger').addEventListener('click', () => {
     const navMenu = document.getElementById('nav-menu');
     navMenu.classList.toggle('active');
 });
