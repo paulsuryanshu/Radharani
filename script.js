@@ -218,3 +218,43 @@ document.getElementById('hamburger').addEventListener('click', () => {
     const navMenu = document.getElementById('nav-menu');
     navMenu.classList.toggle('active');
 });
+
+// Step 1: Add a click event listener to the Search button
+document.getElementById("searchButton").addEventListener("click", function () {
+    // Step 2: Get the search input value
+    const searchTerm = document.getElementById("searchInput").value.trim();
+
+    // Step 3: Validate the input (alert if it's empty)
+    if (!searchTerm) {
+        alert("Please enter a search term!");
+        return;
+    }
+
+    // Step 4: Perform the search (example: filtering product list)
+    searchProducts(searchTerm);
+});
+
+// Step 5: Define the search function (filter products or fetch from backend)
+function searchProducts(term) {
+    const products = ["Apple", "Banana", "Orange", "Grapes", "Seasonal Fruits"];
+    const results = products.filter((product) =>
+        product.toLowerCase().includes(term.toLowerCase())
+    );
+
+    const resultsContainer = document.getElementById("resultsContainer");
+    if (results.length > 0) {
+        resultsContainer.innerHTML = results
+            .map((result) => `<p>${result}</p>`)
+            .join("");
+    } else {
+        resultsContainer.innerHTML = "<p>No products found!</p>";
+    }
+}
+
+
+
+document.getElementById("searchInput").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        document.getElementById("searchButton").click();
+    }
+});
