@@ -1,5 +1,23 @@
 let total = 0;
 
+let currentSlide = 0;
+const slides = document.querySelectorAll(".carousel .slide");
+
+function showSlide(index) {
+    slides[currentSlide].classList.remove("active");
+    slides[currentSlide].classList.add("exiting");
+
+    setTimeout(() => {
+        slides[currentSlide].classList.remove("exiting");
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add("active");
+    }, 1000);
+}
+
+setInterval(() => {
+    showSlide(currentSlide + 1);
+}, 5000);
+
 // Add a new item to the bill
 function addItem(itemName = '', price = 0, quantity = 1) {
     const billItems = document.getElementById('billItems');
@@ -121,79 +139,55 @@ function printBill() {
     billWindow.close();
 }
 
-// Step 1: Add a click event listener to the Search button
-document.getElementById("searchButton").addEventListener("click", function () {
-    // Step 2: Get the search input value
-    const searchTerm = document.getElementById("searchInput").value.trim();
-
-    // Step 3: Validate the input (alert if it's empty)
-    if (!searchTerm) {
-        alert("Please enter a search term!");
-        return;
+// Search Button and Input Handling
+document.getElementById("searchButton").addEventListener("click", handleSearch);
+document.getElementById("searchInput").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        handleSearch();
     }
-
-    // Step 4: Perform the search (example: filtering product list)
-    searchProducts(searchTerm);
 });
 
-// Step 5: Define the search function (filter products or fetch from backend)
-function searchProducts(term) {
-    const products = ["Apple", "Banana", "Orange", "Grapes", "Seasonal Fruits"];
-    const results = products.filter((product) =>
-        product.toLowerCase().includes(term.toLowerCase())
-    );
-
+function handleSearch() {
+    const searchInput = document.getElementById("searchInput");
     const resultsContainer = document.getElementById("resultsContainer");
-    if (results.length > 0) {
-        resultsContainer.innerHTML = results
-            .map((result) => `<p><button onclick="addItem('${result}', 100, 1)">${result}</button></p>`)
-            .join("");
+    const loadingMessage = document.getElementById("loadingMessage");
+    const query = searchInput.value.trim();
+
+    if (query) {
+        loadingMessage.style.display = 'block';
+        resultsContainer.innerHTML = '';
+
+        setTimeout(() => {
+            loadingMessage.style.display = 'none';
+            const products = ["Apple", "Banana", "Orange", "Grapes", "Seasonal Fruits"];
+            const results = products.filter(product =>
+                product.toLowerCase().includes(query.toLowerCase())
+            );
+
+            resultsContainer.innerHTML = results.length
+                ? results.map(result => `<p><button onclick="addItem('${result}', 100, 1)">${result}</button></p>`).join("")
+                : "<p>No products found!</p>";
+        }, 1000);
     } else {
-        resultsContainer.innerHTML = "<p>No products found!</p>";
+        alert("Please enter a search term!");
     }
 }
 
-document.getElementById("searchInput").addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        document.getElementById("searchButton").click();
-    }
-});
-
-// JavaScript for Hamburger Menu
+// Hamburger Menu
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 
 hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active'); // Toggle the active class to show/hide the menu
-    hamburger.classList.toggle('is-active'); // Optional: for toggling hamburger animation
+    navMenu.classList.toggle('active');
+    hamburger.classList.toggle('is-active');
 });
 
-// JavaScript for Search Button
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const resultsContainer = document.getElementById('resultsContainer');
-const loadingMessage = document.getElementById('loadingMessage');
+// Dark Mode Toggle
+const toggleButton = document.createElement("button");
+toggleButton.classList.add("dark-mode-toggle");
+toggleButton.innerText = "Dark Mode";
+document.body.appendChild(toggleButton);
 
-searchButton.addEventListener('click', () => {
-    const query = searchInput.value.trim();
-
-    if (query) {
-        loadingMessage.style.display = 'block'; // Show the loading message
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        // Simulate a search result delay (e.g., fetch from API)
-        setTimeout(() => {
-            loadingMessage.style.display = 'none'; // Hide loading message
-            resultsContainer.innerHTML = `
-                <p>Search results for "<strong>${query}</strong>":</p>
-                <ul>
-                    <li>Result 1 for ${query}</li>
-                    <li>Result 2 for ${query}</li>
-                    <li>Result 3 for ${query}</li>
-                </ul>
-            `; // Replace with dynamic search logic
-        }, 1000); // Simulated delay (1 second)
-    } else {
-        alert('Please enter a search term.');
-    }
+toggleButton.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark-mode");
 });
