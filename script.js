@@ -158,3 +158,42 @@ document.getElementById("searchInput").addEventListener("keypress", function (ev
         document.getElementById("searchButton").click();
     }
 });
+
+// JavaScript for Hamburger Menu
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active'); // Toggle the active class to show/hide the menu
+    hamburger.classList.toggle('is-active'); // Optional: for toggling hamburger animation
+});
+
+// JavaScript for Search Button
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const resultsContainer = document.getElementById('resultsContainer');
+const loadingMessage = document.getElementById('loadingMessage');
+
+searchButton.addEventListener('click', () => {
+    const query = searchInput.value.trim();
+
+    if (query) {
+        loadingMessage.style.display = 'block'; // Show the loading message
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        // Simulate a search result delay (e.g., fetch from API)
+        setTimeout(() => {
+            loadingMessage.style.display = 'none'; // Hide loading message
+            resultsContainer.innerHTML = `
+                <p>Search results for "<strong>${query}</strong>":</p>
+                <ul>
+                    <li>Result 1 for ${query}</li>
+                    <li>Result 2 for ${query}</li>
+                    <li>Result 3 for ${query}</li>
+                </ul>
+            `; // Replace with dynamic search logic
+        }, 1000); // Simulated delay (1 second)
+    } else {
+        alert('Please enter a search term.');
+    }
+});
