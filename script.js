@@ -1,17 +1,18 @@
 let total = 0;
 
 // Add a new item to the bill
-function addItem() {
+function addItem(itemName = '', price = 0, quantity = 1) {
     const billItems = document.getElementById('billItems');
     const newItem = document.createElement('div');
     newItem.classList.add('bill-item');
     newItem.innerHTML = `
-        <input type="text" placeholder="Item Name" class="item-name" required />
-        <input type="number" placeholder="Price" class="item-price" oninput="updateTotal(this)" min="0" step="0.01" required />
-        <input type="number" placeholder="Quantity" class="item-quantity" oninput="updateTotal(this)" min="1" required />
-        <span>₹0.00</span>
+        <input type="text" placeholder="Item Name" class="item-name" value="${itemName}" required />
+        <input type="number" placeholder="Price" class="item-price" oninput="updateTotal(this)" value="${price}" min="0" step="0.01" required />
+        <input type="number" placeholder="Quantity" class="item-quantity" oninput="updateTotal(this)" value="${quantity}" min="1" required />
+        <span>₹${(price * quantity).toFixed(2)}</span>
     `;
     billItems.appendChild(newItem);
+    calculateGrandTotal();
 }
 
 // Update the total price for each item and calculate the grand total
@@ -120,105 +121,6 @@ function printBill() {
     billWindow.close();
 }
 
-// Feedback Form Validation
-document.getElementById('feedbackForm')?.addEventListener('submit', (e) => {
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const rating = document.querySelector('input[name="rating"]:checked');
-    const comments = document.getElementById('comments').value.trim();
-
-    if (!name || !email || !rating || !comments) {
-        e.preventDefault();
-        alert("Please complete all fields and provide a rating.");
-    }
-});
-
-// Login Form Validation
-document.getElementById('loginForm')?.addEventListener('submit', (e) => {
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value.trim();
-
-    if (!email || !password) {
-        e.preventDefault();
-        alert("Please enter both email and password.");
-    }
-});
-
-// Register Form Validation
-document.getElementById('registerForm')?.addEventListener('submit', (e) => {
-    const name = document.getElementById('register-name').value.trim();
-    const email = document.getElementById('register-email').value.trim();
-    const password = document.getElementById('register-password').value.trim();
-
-    if (!name || !email || !password) {
-        e.preventDefault();
-        alert("Please fill in your name, email, and password.");
-    }
-});
-
-// Display alerts if there is any server-side message
-const alertBox = document.querySelector('.alert-box');
-const alertMessage = document.querySelector('.alert');
-
-function showAlert(message) {
-    alertMessage.textContent = message;
-    alertBox.style.display = 'block';
-
-    // Hide alert after 3 seconds
-    setTimeout(() => {
-        alertBox.style.display = 'none';
-    }, 3000);
-}
-
-// Check if there are any URL parameters for alerts (e.g., from PHP redirects)
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.has('message')) {
-    const message = urlParams.get('message');
-    showAlert(message);
-}
-
-// Carousel Functionality
-let currentSlide = 0;
-const slides = document.querySelectorAll(".carousel .slide");
-
-function showSlide(index) {
-    slides[currentSlide].classList.remove("active");
-    slides[currentSlide].classList.add("exiting");
-
-    setTimeout(() => {
-        slides[currentSlide].classList.remove("exiting");
-        currentSlide = (index + slides.length) % slides.length;
-        slides[currentSlide].classList.add("active");
-    }, 1000);
-}
-
-setInterval(() => {
-    showSlide(currentSlide + 1);
-}, 5000);
-
-// Dark Mode Toggle
-const toggleButton = document.querySelector(".dark-mode-toggle");
-
-if (!toggleButton) {
-    const newToggleButton = document.createElement("button");
-    newToggleButton.classList.add("dark-mode-toggle");
-    newToggleButton.innerText = "Dark Mode";
-    document.body.appendChild(newToggleButton);
-
-    newToggleButton.addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark-mode");
-        newToggleButton.innerText = document.documentElement.classList.contains("dark-mode")
-            ? "Light Mode"
-            : "Dark Mode";
-    });
-}
-
-// Hamburger Menu
-document.getElementById('hamburger').addEventListener('click', () => {
-    const navMenu = document.getElementById('nav-menu');
-    navMenu.classList.toggle('active');
-});
-
 // Step 1: Add a click event listener to the Search button
 document.getElementById("searchButton").addEventListener("click", function () {
     // Step 2: Get the search input value
@@ -244,14 +146,12 @@ function searchProducts(term) {
     const resultsContainer = document.getElementById("resultsContainer");
     if (results.length > 0) {
         resultsContainer.innerHTML = results
-            .map((result) => `<p>${result}</p>`)
+            .map((result) => `<p><button onclick="addItem('${result}', 100, 1)">${result}</button></p>`)
             .join("");
     } else {
         resultsContainer.innerHTML = "<p>No products found!</p>";
     }
 }
-
-
 
 document.getElementById("searchInput").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
