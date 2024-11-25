@@ -112,6 +112,13 @@ nav {
 }
 
 /* Search Container */
+:root {
+    --radius: 8px;
+    --secondary-color: #f39c12; /* Example color */
+    --secondary-hover-color: #e67e22; /* Example hover color */
+    --transition: 0.3s ease;
+}
+
 .search-container {
     display: flex;
     align-items: center;
@@ -144,6 +151,16 @@ nav {
 
 .search-container button:hover {
     background-color: var(--secondary-hover-color);
+}
+
+#loadingMessage {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #888;
+}
+
+#resultsContainer {
+    margin-top: 20px;
 }
 
 /* Hero Section with Carousel */
