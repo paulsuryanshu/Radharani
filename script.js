@@ -57,15 +57,28 @@ function calculateGrandTotal() {
     document.getElementById('grandTotal').textContent = `Grand Total: ₹${total.toFixed(2)}`;
 }
 
-// Generate bill with validation
+// Generate bill with enhanced validation
 function generateBill() {
     const customerName = document.getElementById('customerName').value.trim();
     const customerMobile = document.getElementById('customerMobile').value.trim();
     const paymentMode = document.querySelector('input[name="paymentMode"]:checked');
     const message = document.getElementById('message');
 
+    // Validation for name and mobile number
     if (!customerName || !customerMobile || !paymentMode || total === 0) {
         message.textContent = 'Please fill in all fields and add items to the bill.';
+        message.style.color = 'red';
+        return;
+    }
+
+    if (/\d/.test(customerName)) {
+        message.textContent = 'Customer name cannot contain numbers.';
+        message.style.color = 'red';
+        return;
+    }
+
+    if (customerMobile.length !== 10 || !/^[0-9]+$/.test(customerMobile)) {
+        message.textContent = 'Mobile number must be exactly 10 digits.';
         message.style.color = 'red';
         return;
     }
@@ -74,14 +87,25 @@ function generateBill() {
     message.style.color = 'green';
 }
 
-// Print the bill with validation
+// Print the bill with enhanced validation
 function printBill() {
     const customerName = document.getElementById('customerName').value.trim();
     const customerMobile = document.getElementById('customerMobile').value.trim();
     const paymentMode = document.querySelector('input[name="paymentMode"]:checked');
 
+    // Validation for name and mobile number
     if (!customerName || !customerMobile || !paymentMode || total === 0) {
         alert("Please ensure all details are filled before printing.");
+        return;
+    }
+
+    if (/\d/.test(customerName)) {
+        alert("Customer name cannot contain numbers.");
+        return;
+    }
+
+    if (customerMobile.length !== 10 || !/^[0-9]+$/.test(customerMobile)) {
+        alert("Mobile number must be exactly 10 digits.");
         return;
     }
 
